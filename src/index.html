@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, maximum-scale=1.0, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0">
   <title>Carousel with Scroll Buttons</title>
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
+  <a href="#footer" class="floating-contact">
+    <span class="contact-icon">📞</span>
+    <span class="contact-text">Contato</span>
+  </a>
+
   <h1>
     Família mudando-se para São Paulo Vende:
     <span id="currentDate"></span>
@@ -35,24 +42,24 @@
     </div>
   </div>
 
-    <!-- Esteira -->
-    <div class="list-item">
-      <div class="item-content">
-        <div class="carousel-container">
-          <button class="scroll-btn left-btn" aria-label="Scroll Left">&#10094;</button>
-          <div class="carousel-track">
-            <img src="./images/esteira1.jpg" alt="Esteira - Vista 1">
-            <img src="./images/esteira2.jpg" alt="Esteira - Vista 2">
-            <img src="./images/esteira3.jpg" alt="Esteira - Vista 3">
-            <img src="./images/esteira4.jpg" alt="Esteira - Vista 4">
-            <img src="./images/esteira5.jpg" alt="Esteira - Vista 5">
-          </div>
-          <button class="scroll-btn right-btn" aria-label="Scroll Right">&#10095;</button>
+  <!-- Esteira -->
+  <div class="list-item">
+    <div class="item-content">
+      <div class="carousel-container">
+        <button class="scroll-btn left-btn" aria-label="Scroll Left">&#10094;</button>
+        <div class="carousel-track">
+          <img src="./images/esteira1.jpg" alt="Esteira - Vista 1">
+          <img src="./images/esteira2.jpg" alt="Esteira - Vista 2">
+          <img src="./images/esteira3.jpg" alt="Esteira - Vista 3">
+          <img src="./images/esteira4.jpg" alt="Esteira - Vista 4">
+          <img src="./images/esteira5.jpg" alt="Esteira - Vista 5">
         </div>
-        <h2>Esteira Ergometrica ZiYou ZU150 Connect Bluetooth Motor 2.0HP</h2>
-        <p class="amount">R$ 2.299,00</p>
+        <button class="scroll-btn right-btn" aria-label="Scroll Right">&#10095;</button>
       </div>
+      <h2>Esteira Ergometrica ZiYou ZU150 Connect Bluetooth Motor 2.0HP</h2>
+      <p class="amount">R$ 2.299,00</p>
     </div>
+  </div>
 
   <!-- Bar / Cristaleira -->
   <div class="list-item">
@@ -190,9 +197,45 @@
     </div>
   </div>
 
+  <!-- Adega de Vinhos -->
+  <div class="list-item">
+    <div class="item-content">
+      <div class="carousel-container">
+        <button class="scroll-btn left-btn" aria-label="Scroll Left">&#10094;</button>
+        <div class="carousel-track">
+          <img src="./images/adega7.jpg" alt="Adega de Vinhos - Vista Principal">
+          <img src="./images/adega5.jpg" alt="Adega de Vinhos - Vista Detalhada 2">
+          <img src="./images/adega4.jpg" alt="Adega de Vinhos - Vista Detalhada 3">
+          <img src="./images/adega3.jpg" alt="Adega de Vinhos - Vista Detalhada 4">
+          <img src="./images/adega2.jpg" alt="Adega de Vinhos - Vista Detalhada 5">
+          <img src="./images/adega1.jpg" alt="Adega de Vinhos - Vista Completa">
+        </div>
+        <button class="scroll-btn right-btn" aria-label="Scroll Right">&#10095;</button>
+      </div>
+      <h2>Adega de Vinhos com Gaveta e Armário</h2>
+      <p class="amount">R$ 899,00</p>
+    </div>
+  </div>
+
   <div class="spacer"></div>
 
-  <script src="./script.js"></script>
+  <div class="pre-footer-banner">
+    Ligar ou WhatsApp
+  </div>
+
+  <footer class="footer" id="footer">
+    <div class="footer-content">
+      <p>
+        Angela:
+        <a href="tel:+5555981060201">(55) 98106-0201</a>
+        <button class="copy-btn" aria-label="Copiar número">
+          <i class="far fa-copy"></i>
+          <span class="copy-tooltip">Copiar</span>
+        </button>
+      </p>
+      <p class="contact-note">Chamada de voz ou WhatsApp</p>
+    </div>
+  </footer>
 
   <div id="imageModal" class="modal">
     <span class="close-modal">&times;</span>
@@ -202,11 +245,7 @@
     </div>
   </div>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <h3>Contato</h3>
-      <p>Angela: <a href="tel:+5555981420375">(55) 98106-0201</a></p>
-    </div>
-  </footer>
+  <script src="./script.js"></script>
 </body>
+
 </html>

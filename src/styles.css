@@ -47,14 +47,16 @@ h1::after {
 /* Enhanced card styling */
 .list-item {
   background-color: #fff;
-  margin: 0 auto 2.5rem;  /* Increased bottom margin */
-  padding: 2rem;
+  margin: 0 1.25rem 2.5rem;
+  padding: 1rem;
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  max-width: 850px;  /* Slightly larger than carousel */
+  max-width: 850px;
   position: relative;
   border: 1px solid rgba(0,0,0,0.05);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 
 .list-item:hover {
@@ -75,24 +77,14 @@ h1::after {
   border-radius: 0 0 4px 4px;
 }
 
-/* Optional: Add a subtle pattern to card background */
-.list-item {
-  background-image:
-    linear-gradient(45deg, #f9f9f9 25%, transparent 25%),
-    linear-gradient(-45deg, #f9f9f9 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #f9f9f9 75%),
-    linear-gradient(-45deg, transparent 75%, #f9f9f9 75%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-}
-
 /* Container for content inside card */
 .item-content {
   background: #fff;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.5rem;
   position: relative;
   z-index: 1;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
 }
 
 /* Adjust carousel container for new card layout */
@@ -101,6 +93,7 @@ h1::after {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: relative;
 }
 
 /* The horizontal track of images */
@@ -159,18 +152,19 @@ h1::after {
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   cursor: pointer;
-  display: none; /* hidden by default; JS will show when needed */
+  display: none;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   outline: none;
+  transition: all 0.2s ease;
 }
 
 .scroll-btn:hover {
@@ -179,12 +173,12 @@ h1::after {
 
 /* Position left button at left edge */
 .left-btn {
-  left: 10px;
+  left: 0px;
 }
 
 /* Position right button at right edge */
 .right-btn {
-  right: 10px;
+  right: 15px;
 }
 
 /* Amount text styling */
@@ -283,7 +277,7 @@ h1::after {
 .footer {
   background-color: #fff;
   padding: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 0;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
 
@@ -333,4 +327,134 @@ h1::after {
   width: 40%;
   height: 2px;
   background: linear-gradient(to right, #3498db, transparent);
+}
+
+/* Floating contact button */
+.floating-contact {
+  position: fixed;
+  top: 46rem;
+  right: 20px;
+  background: linear-gradient(45deg, #ff6b2c, #ff8c42);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(255, 107, 44, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  z-index: 1000;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.floating-contact:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 107, 44, 0.4);
+  background: linear-gradient(45deg, #ff5a1f, #ff7b2f);
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+}
+
+.contact-text {
+  font-size: 1rem;
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+  .floating-contact {
+    padding: 10px 20px;
+    top: 46rem;
+    right: 15px;
+  }
+}
+
+/* Add smooth scroll behavior to html */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: Hide button when footer is visible */
+@media (max-height: 1000px) {
+  .floating-contact.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Copy button styling */
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-left: 8px;
+  position: relative;
+  transition: all 0.2s ease;
+  color: #007AFF; /* Apple's blue */
+}
+
+.copy-btn i {
+  font-size: 1.1rem;
+}
+
+.copy-btn:hover {
+  transform: scale(1.1);
+  color: #0051A8; /* Darker blue on hover */
+}
+
+/* Success state */
+.copy-btn.success {
+  color: #34C759; /* Apple's green */
+}
+
+/* Tooltip styling */
+.copy-tooltip {
+  position: absolute;
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover .copy-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add this to your existing footer styles */
+.contact-note {
+  color: #666;
+  font-size: 0.8rem;
+  margin-top: 0.6rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Pre-footer banner */
+.pre-footer-banner {
+  background: linear-gradient(45deg, #ff6b2c, #ff8c42);
+  color: white;
+  height: 45px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
 }

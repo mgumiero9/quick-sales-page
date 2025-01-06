@@ -119,4 +119,56 @@ document.addEventListener("DOMContentLoaded", () => {
       closeModal();
     }
   });
+
+  const floatingContact = document.querySelector(".floating-contact");
+  const footer = document.getElementById("footer");
+
+  // Update the observer options for earlier triggering
+  const observerOptions = {
+    root: null,
+    rootMargin: "-200px 0px", // Even earlier trigger
+    threshold: 0, // Trigger immediately when any part is visible
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        floatingContact.style.opacity = "0";
+        floatingContact.style.visibility = "hidden";
+        floatingContact.style.pointerEvents = "none";
+        setTimeout(() => {
+          floatingContact.style.display = "none"; // Completely remove from DOM flow
+        }, 300); // Wait for fade out animation
+      } else {
+        floatingContact.style.display = "flex";
+        // Small delay to ensure display is set before showing
+        setTimeout(() => {
+          floatingContact.style.opacity = "1";
+          floatingContact.style.visibility = "visible";
+          floatingContact.style.pointerEvents = "auto";
+        }, 10);
+      }
+    });
+  }, observerOptions);
+
+  observer.observe(footer);
+
+  const copyBtn = document.querySelector(".copy-btn");
+  const phoneNumber = "55981060201"; // Clean number for copying
+
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(phoneNumber);
+      const tooltip = copyBtn.querySelector(".copy-tooltip");
+      tooltip.textContent = "Copiado!";
+      copyBtn.classList.add("success");
+
+      setTimeout(() => {
+        tooltip.textContent = "Copiar";
+        copyBtn.classList.remove("success");
+      }, 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  });
 });
